@@ -1,1 +1,0 @@
-curl http://<endpoint>:8080/clojure-collector-1.1.0-standalone/i

@@ -1,5 +1,5 @@
 #
-# Cookbook:: tomcat-clojure
+# Cookbook:: mywebsetup 
 # Recipe:: default
 #
 # Copyright:: 2018, The Authors, All Rights Reserved.
@@ -8,6 +8,10 @@
 # end
 
 package "httpd" do
+  action :install
+end
+
+package "php" do
   action :install
 end
 
