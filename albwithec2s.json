@@ -1261,7 +1261,7 @@
                                 "unzip chef.zip\n",
                                 "cd chef\n",
                                 "./installer.sh\n",
-                                "chef-solo -c /root/chef/solo.rb -j /root/chef/roles/clojure.role.json\n",
+                                "chef-solo -c /root/chef/solo.rb -j /root/chef/roles/apache.role.json\n",
                                 "yum update -y aws-cfn-bootstrap\n",
                                 "# Install the sample application\n",
                                 "/opt/aws/bin/cfn-init -v ",
