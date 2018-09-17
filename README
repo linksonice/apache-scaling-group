@@ -1,8 +1,13 @@
-Hello and welcome to this project!
+Hello and welcome to this project.
+
+The deal here is that you get an ELB with 1 ECS instance running apache, which autoscales up 
+(to a maximum of 2 instances) or down according to the load on the CPU, which is measured by cloudwatch.
+
+How to set this up:
 
 cd into the directory like so:
 
-       cd tomcat-clojure/
+       cd apache-scaling-group/
 
 To deploy the entire stack, you need a valid  email address that you have access to, and one of 
 the existing key pairs in your AWS account. These 2 values should be entered in the parameters.json file.
@@ -25,7 +30,7 @@ a) scaling out the cluster from  1 to 2
 
 AND
 
-b) sending the email
+b) sending an email
 
 In both cases we're looking at CPUUtilization > 20 for 1 datapoint within 1 minute. The stress 
 package is ready installed as well, so you can ssh to the 1st instance and run a typical command:
