@@ -1,4 +1,4 @@
-# tomcat-clojure CHANGELOG
+# apache CHANGELOG
 
 This file is used to list changes made in each version of the tomcat-clojure cookbook.
 
