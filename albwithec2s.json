@@ -522,7 +522,7 @@
             "Type": "String"
         },
         "WebServerCount": {
-            "Default": "1",
+            "Default": "2",
             "Description": "Number of EC2 instances to launch for the WebServer server",
             "Type": "Number"
         },
@@ -1075,8 +1075,8 @@
                 "LaunchConfigurationName": {
                     "Ref": "WebServerLaunchConfig"
                 },
-                "MaxSize": "2",
-                "MinSize": "1",
+                "MaxSize": "3",
+                "MinSize": "2",
                 "Tags": [
                     {
                         "Key": "Network",
@@ -1102,7 +1102,7 @@
             "UpdatePolicy": {
                 "AutoScalingRollingUpdate": {
                     "MaxBatchSize": "1",
-                    "MinInstancesInService": "1",
+                    "MinInstancesInService": "2",
                     "PauseTime": "PT15M",
                     "WaitOnResourceSignals": "true"
                 }
@@ -1186,11 +1186,29 @@
                                 "group": "root",
                                 "mode": "000644",
                                 "owner": "root"
+                            },
+                            "/var/www/html/index.php": {
+                                "content": {
+                                    "Fn::Join": [
+                                        "\n",
+                                        [
+                                            "<?php",
+                                            "$localIP = getHostByName(php_uname('n')) ;",
+                                            "echo \"Congrations! The server IP here is\" . $localIP . \".<br>\" ;",  
+                                            "echo \"You're welcome too, by the way!<br>\" ;",
+                                            "echo \"Come back soon!<br>\" ?>"
+                                        ]
+                                    ]
+                                },
+                                "group": "root",
+                                "mode": "000644",
+                                "owner": "root"
                             }
                         },
                         "packages": {
                             "yum": {
-                                "httpd": []
+                                "httpd": [],
+                                "php": []
                             }
                         },
                         "services": {
@@ -1255,6 +1273,7 @@
                                 "exec > >(tee /var/log/user-data.log|logger -t user-data ) 2>&1\n",
                                 "yum install mlocate -y\n",
                                 "yum install stress -y\n",
+                                "yum install php -y\n",
                                 "updatedb\n",
                                 "cd /root\n",
                                 "wget https://s3.eu-west-2.amazonaws.com/rancid9000/devops/chef.zip\n",
