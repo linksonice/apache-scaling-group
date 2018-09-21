@@ -613,7 +613,7 @@
                 "HealthCheckIntervalSeconds": 90,
                 "HealthCheckTimeoutSeconds": 60,
                 "HealthyThresholdCount": 3,
-                "Port": 8080,
+                "Port": 80,
                 "Protocol": "HTTP",
                 "UnhealthyThresholdCount": 5,
                 "VpcId": {
@@ -623,6 +623,7 @@
             "Type": "AWS::ElasticLoadBalancingV2::TargetGroup"
         },
         "CPUAlarmHigh": {
+            "Type": "AWS::CloudWatch::Alarm",
             "Properties": {
                 "AlarmActions": [
                     {
@@ -648,10 +649,10 @@
                 "Period": "60",
                 "Statistic": "Average",
                 "Threshold": "20"
-            },
-            "Type": "AWS::CloudWatch::Alarm"
+            }
         },
         "CPUAlarmLow": {
+            "Type": "AWS::CloudWatch::Alarm",
             "Properties": {
                 "AlarmActions": [
                     {
@@ -674,8 +675,7 @@
                 "Period": "60",
                 "Statistic": "Average",
                 "Threshold": "10"
-            },
-            "Type": "AWS::CloudWatch::Alarm"
+            }
         },
         "GatewayToInternet": {
             "Properties": {
@@ -713,8 +713,8 @@
                     "Ref": "PublicNetworkAcl"
                 },
                 "PortRange": {
-                    "From": "8080",
-                    "To": "8080"
+                    "From": "80",
+                    "To": "80"
                 },
                 "Protocol": "6",
                 "RuleAction": "allow",
@@ -820,13 +820,13 @@
         },
         "PublicLoadBalancerSecurityGroup": {
             "Properties": {
-                "GroupDescription": "Public ELB Security Group with HTTP access on port 8080 from the internet",
+                "GroupDescription": "Public ELB Security Group with HTTP access on port 80 from the internet",
                 "SecurityGroupEgress": [
                     {
                         "CidrIp": "0.0.0.0/0",
                         "FromPort": "80",
                         "IpProtocol": "tcp",
-                        "ToPort": "8080"
+                        "ToPort": "80"
                     }
                 ],
                 "SecurityGroupIngress": [
@@ -834,7 +834,7 @@
                         "CidrIp": "0.0.0.0/0",
                         "FromPort": "80",
                         "IpProtocol": "tcp",
-                        "ToPort": "8080"
+                        "ToPort": "80"
                     }
                 ],
                 "VpcId": {
@@ -1299,12 +1299,12 @@
                 "GroupDescription": "Allow access from load balancer and bastion as well as outbound HTTP and HTTPS traffic",
                 "SecurityGroupIngress": [
                     {
-                        "FromPort": "8080",
+                        "FromPort": "80",
                         "IpProtocol": "tcp",
                         "SourceSecurityGroupId": {
                             "Ref": "PublicLoadBalancerSecurityGroup"
                         },
-                        "ToPort": "8080"
+                        "ToPort": "80"
                     },
                     {
                         "CidrIp": {
