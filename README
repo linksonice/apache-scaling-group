@@ -1,7 +1,7 @@
 Hello and welcome to this project.
 
-The deal here is that you get an ELB with 1 ECS instance running apache and php, which autoscales up 
-(to a maximum of 2 instances) or down according to the load on the CPU, which is measured by cloudwatch.
+The deal here is that you get an ELB with 2 ECS instances running apache and php, which autoscales up 
+(to a maximum of 3 instances) or down according to the load on the CPU, which is measured by cloudwatch.
 
 How to set this up:
 
@@ -14,9 +14,7 @@ the existing key pairs in your AWS account. These 2 values should be entered in 
 
 You can then simply run this command:
    
-      aws cloudformation create-stack --stack-name ApacheScalingGroup \ 
-          --template-body file://$PWD/albwithec2s.json \ 
-          --parameters  file://$PWD/parameters.json
+aws cloudformation create-stack --stack-name ApacheScalingGroup --template-body file://$PWD/albwithec2s.json --parameters  file://$PWD/parameters.json
 
 Wait a while, check your CF console, and when the creation is complete, you will hopefully find 
 the resulting CF stack ticks all the boxes. 
@@ -42,6 +40,7 @@ of 2 instances in the auto-scaling group.
 
 In the most recent update, we're proving the load balancer hits BOTH endpoints by installing php, and
 making an index.php in the CF itself which displays the host/server IP. This is a simple proof of
-concept, to show the load balancer is hitting both end points.
+concept, to show the load balancer is hitting both end points. The other proviso here is that we run
+a minimum/default number of TWO EC2s in the autoscaling group.
 
-The health state of the listeners in the target group will tell you the same.
+The health state of the listeners in the target group will tell you the same as the php echo $localIP.
