@@ -603,7 +603,7 @@
                 "LoadBalancerArn": {
                     "Ref": "PublicApplicationLoadBalancer"
                 },
-                "Port": "8080",
+                "Port": "80",
                 "Protocol": "HTTP"
             },
             "Type": "AWS::ElasticLoadBalancingV2::Listener"
@@ -1261,7 +1261,7 @@
                                 "unzip chef.zip\n",
                                 "cd chef\n",
                                 "./installer.sh\n",
-                                "chef-solo -c /root/chef/solo.rb -j /root/chef/roles/apache.role.json\n",
+                                "# chef-solo -c /root/chef/solo.rb -j /root/chef/roles/apache.role.json\n",
                                 "yum update -y aws-cfn-bootstrap\n",
                                 "# Install the sample application\n",
                                 "/opt/aws/bin/cfn-init -v ",
