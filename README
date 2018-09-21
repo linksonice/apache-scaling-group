@@ -14,9 +14,7 @@ the existing key pairs in your AWS account. These 2 values should be entered in 
 
 You can then simply run this command:
    
-      aws cloudformation create-stack --stack-name ApacheScalingGroup \ 
-          --template-body file://$PWD/albwithec2s.json \ 
-          --parameters  file://$PWD/parameters.json
+aws cloudformation create-stack --stack-name ApacheScalingGroup --template-body file://$PWD/albwithec2s.json --parameters  file://$PWD/parameters.json
 
 Wait a while, check your CF console, and when the creation is complete, you will hopefully find 
 the resulting CF stack ticks all the boxes. 
