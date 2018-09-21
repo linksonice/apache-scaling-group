@@ -42,6 +42,7 @@ of 2 instances in the auto-scaling group.
 
 In the most recent update, we're proving the load balancer hits BOTH endpoints by installing php, and
 making an index.php in the CF itself which displays the host/server IP. This is a simple proof of
-concept, to show the load balancer is hitting both end points.
+concept, to show the load balancer is hitting both end points. The other proviso here is that we run
+a minimum/default number of TWO EC2s in the autoscaling group.
 
-The health state of the listeners in the target group will tell you the same.
+The health state of the listeners in the target group will tell you the same as the php echo $localIP.
