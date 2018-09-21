@@ -1194,7 +1194,7 @@
                                         [
                                             "<?php",
                                             "$localIP = getHostByName(php_uname('n')) ;",
-                                            "echo \"Congrations! The server IP here is\" . $localIP . \".<br>\" ;",  
+                                            "echo \"Congratulations! The server IP here is \" . $localIP . \" .<br>\" ;",  
                                             "echo \"You're welcome too, by the way!<br>\" ;",
                                             "echo \"Come back soon!<br>\" ?>"
                                         ]
