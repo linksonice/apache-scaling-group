@@ -40,16 +40,4 @@ package is ready installed as well, so you can ssh to the 1st instance and run a
 for a couple of minutes to thrash it a bit, resulting in the both an email, and a scale-out to the maximum 
 of 2 instances in the auto-scaling group.
 
-Finally I've chosen chef-solo to deploy my own (home made for the purpose), very simple tomcat-clojure 
-cookbook. Strictly speaking it wouldn't have been necessary to use any configuration management tool at all
-(such as puppet, ansible, chef etc) whatsoever as the objectives stated could very easily have been met in 
-the UserData section of the CF alone, but as the objectives list seems to imply that it would be nice to 
-demonstrate the use of a config management tool, this was the path taken in the end. The cookbook is 
-downloaded from my own publicly accessible s3 bucket, again from the UserData section of the CF template, 
-and part of an over-arching chef/ directory; just the way I'm used to working at the moment with chef-solo.
-
-FINALLY: you need to use this curl command for final proof of pudding:
-
-       curl -o - http://<ALB endpoint>:8080/clojure-collector-1.1.0-standalone/i
-
-rather than the command shown in the PDF, because curl has changed lately. 
+more soon
