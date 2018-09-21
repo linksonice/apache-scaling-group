@@ -35,10 +35,7 @@ b) sending an email
 In both cases we're looking at CPUUtilization > 20 for 1 datapoint within 1 minute. The stress 
 package is ready installed as well, so you can ssh to the 1st instance and run a typical command:
 
-       stress --cpu 16 --io 4 --vm 2 --vm-bytes 128M --timeout 120s &aws cloudformation create-stack --stack-name ClojureAutoGroup \ 
-          --template-body file://$PWD/albwithec2s.json \ 
-          --parameters  file://$PWD/parameters.json
-
+       stress --cpu 16 --io 4 --vm 2 --vm-bytes 128M --timeout 120s &
 
 for a couple of minutes to thrash it a bit, resulting in the both an email, and a scale-out to the maximum 
 of 2 instances in the auto-scaling group.
