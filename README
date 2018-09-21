@@ -1,7 +1,7 @@
 Hello and welcome to this project.
 
-The deal here is that you get an ELB with 1 ECS instance running apache and php, which autoscales up 
-(to a maximum of 2 instances) or down according to the load on the CPU, which is measured by cloudwatch.
+The deal here is that you get an ELB with 2 ECS instances running apache and php, which autoscales up 
+(to a maximum of 3 instances) or down according to the load on the CPU, which is measured by cloudwatch.
 
 How to set this up:
 
