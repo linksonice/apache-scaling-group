@@ -967,6 +967,7 @@
             "Type": "AWS::EC2::Subnet"
         },
         "PublicSubnetNetworkAclAssociation1": {
+            "Type": "AWS::EC2::SubnetNetworkAclAssociation",
             "Properties": {
                 "NetworkAclId": {
                     "Ref": "PublicNetworkAcl"
@@ -974,10 +975,10 @@
                 "SubnetId": {
                     "Ref": "PublicSubnet1"
                 }
-            },
-            "Type": "AWS::EC2::SubnetNetworkAclAssociation"
+            }
         },
         "PublicSubnetNetworkAclAssociation2": {
+            "Type": "AWS::EC2::SubnetNetworkAclAssociation",
             "Properties": {
                 "NetworkAclId": {
                     "Ref": "PublicNetworkAcl"
@@ -985,10 +986,10 @@
                 "SubnetId": {
                     "Ref": "PublicSubnet2"
                 }
-            },
-            "Type": "AWS::EC2::SubnetNetworkAclAssociation"
+            }
         },
         "PublicSubnetRouteTableAssociation1": {
+            "Type": "AWS::EC2::SubnetRouteTableAssociation",
             "Properties": {
                 "RouteTableId": {
                     "Ref": "PublicRouteTable"
@@ -996,10 +997,10 @@
                 "SubnetId": {
                     "Ref": "PublicSubnet1"
                 }
-            },
-            "Type": "AWS::EC2::SubnetRouteTableAssociation"
+            }
         },
         "PublicSubnetRouteTableAssociation2": {
+            "Type": "AWS::EC2::SubnetRouteTableAssociation",
             "Properties": {
                 "RouteTableId": {
                     "Ref": "PublicRouteTable"
@@ -1007,8 +1008,7 @@
                 "SubnetId": {
                     "Ref": "PublicSubnet2"
                 }
-            },
-            "Type": "AWS::EC2::SubnetRouteTableAssociation"
+            }
         },
         "ScaleDownPolicy": {
             "Properties": {
